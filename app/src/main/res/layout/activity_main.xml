@@ -1,22 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorPrimary"
     tools:context="xyz.leezoom.rxcoolweather.ui.activity.MainActivity">
 
-    <Button
-        android:id="@+id/request_button"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/wt_refresh_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="request"/>
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Hello World!" />
+        <ScrollView
+            android:id="@+id/wt_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:overScrollMode="never">
 
-</LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <include layout="@layout/title" />
+
+                <include layout="@layout/now" />
+
+                <include layout="@layout/suggestion" />
+
+                <include layout="@layout/forecast" />
+
+                <include layout="@layout/aqi" />
+            </LinearLayout>
+
+        </ScrollView>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</FrameLayout>
